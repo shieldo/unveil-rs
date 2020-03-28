@@ -35,6 +35,7 @@ use crate::{
     server::Server,
 };
 use std::path::PathBuf;
+use crate::assets::CSS_THEME;
 
 pub struct UnveilProject {
     pub root: PathBuf,
@@ -185,6 +186,11 @@ impl UnveilProject {
         if !PathBuf::from("public/unveil.css").exists() {
             let mut css = File::create("public/unveil.css")?;
             css.write_all(CSS)?;
+        }
+
+        if !PathBuf::from("public/theme.css").exists() {
+            let mut css = File::create("public/theme.css")?;
+            css.write_all(CSS_THEME)?;
         }
 
         Ok(())
